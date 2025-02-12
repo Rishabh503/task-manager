@@ -6,6 +6,10 @@ const Header = () => {
   //   else setuSerName(data.first_name)
   // console.log("header ka dat:",data)
 
+  const handleLogout=()=>{
+    localStorage.setItem('loggedInUser','');
+    window.location.reload()
+  }
   return (
     
     <div className='flex items-center text-white p-10 justify-between'>
@@ -19,7 +23,7 @@ const Header = () => {
         </span>
         </p>
 
-        <button className='bg-red-500 font-medium px-3 py-4 rounded-xl'>
+        <button onClick={()=>handleLogout()} className='bg-red-500 font-medium px-3 py-4 rounded-xl'>
             LoggOut
         </button>
     </div>
