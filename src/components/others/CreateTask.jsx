@@ -33,10 +33,11 @@ const [task, setTask] = useState({})
         const data=userData
         data.forEach((empl)=>{
             if(empl.first_name==employee){
-            console.log(empl,"hi")
-            console.log(empl.tasks)
+                    console.log(empl,"hi")
+                    console.log(empl.tasks)
             empl.tasks.push(task)
-            console.log(empl.tasks)
+            empl.tasks_count.new_task=empl.tasks_count.new_task+1
+                    console.log(empl.tasks)
             // localStorage.setItem('employees',JSON.stringify(data))
 
             }
