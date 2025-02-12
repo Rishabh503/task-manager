@@ -1,22 +1,23 @@
 import React from 'react'
 
-const AcceptTask = () => {
+const AcceptTask = ({data}) => {
+    // console.log(data ,"accep new task ka")
   return (
-    <div className='h-full  flex-shrink-0 items-center justify-between  rounded-xl w-[300px] bg-red-200'>
+    <div className='h-full  flex-shrink-0 items-center justify-between  rounded-xl w-[300px] bg-yellow-400'>
     <div className='flex items-center justify-between px-2'>
-    <h2 className='text-sm mt-2 rounded-xl bg-red-700 p-2 font-semibold'>
-             High task
-         </h2>
-         <h3 className='text-xl font-medium'>
-             Accepeted Task
-         </h3>
-    </div>
+        <h2 className='text-sm mt-2 rounded-xl bg-red-700 p-2 font-semibold'>
+              {data.category}
+             </h2>
+             <h3 className='text-xl font-medium'>
+                {data.date}
+             </h3>
+        </div>
      <div className='mt-5'>
          <p className='text-center font-bold text-xl '>
-             make a new video
+             {  data.title}
          </p>
          <p>
-             Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet iusto repellat natus ipsum? Eligendi, iure? Sequi cupiditate laborum rem eveniet! Delectus, minima voluptatibus? Vero, nisi. Magnam inventore blanditiis nobis natus.
+          {data.desc}
          </p>
      </div>
      <div className='flex justify-between'>

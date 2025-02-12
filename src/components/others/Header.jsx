@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
 
-const Header = () => {
+const Header = (props) => {
   // const [username , setuSerName]=useState("")
   // if(!data) setuSerName("admin")
   //   else setuSerName(data.first_name)
   // console.log("header ka dat:",data)
-
+  console.log(props)
   const handleLogout=()=>{
     localStorage.setItem('loggedInUser','');
-    window.location.reload()
+    // window.location.reload()
+    props.changeUser('')
+
   }
   return (
     
@@ -19,7 +21,8 @@ const Header = () => {
         <br />
         <span className='text-3xl font-medium '>
 
-        username 🏆
+         {/* {props.data.first_name}🏆 */}
+         username
         </span>
         </p>
 

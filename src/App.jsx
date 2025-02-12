@@ -20,8 +20,8 @@ useEffect(()=>{
   
   if(loggedInUser){
     const userData=JSON.parse(loggedInUser)
-    console.log(loggedInUser)
-    console.log("user logged in hai")
+    // console.log(loggedInUser)
+    // console.log("user logged in hai")
     setUser(userData.role)
     setLoggedInUserData(userData.data)
   }
@@ -59,7 +59,7 @@ const tee=useContext(AuthContext);
   return (
     < >
     {!user? <Login handleLogin={handleLogin}/> : <h1 className="text-white">hi</h1>}
-    {user=="admin"?<AdminDashboard/> :(user=="employee")?<EmployeeDashboard data={loggedInUserData}/>:""}
+    {user=="admin"?<AdminDashboard changeUser={setUser}/> :(user=="employee")?<EmployeeDashboard changeUser={setUser} data={loggedInUserData}/>:"d"}
       {/* <Login/>   */}
       {/* <EmployeeDashboard/> */}
       {/* <AdminDashboard/> */}
