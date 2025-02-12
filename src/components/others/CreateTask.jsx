@@ -1,8 +1,11 @@
 import js from '@eslint/js'
 import { data } from 'autoprefixer'
-import React, { act, useState } from 'react'
+import React, { act, useContext, useState } from 'react'
+import { AuthContext } from '../../context/AuthProvider'
 
 const CreateTask = () => {
+
+    const [userData, setUserData] = useContext(AuthContext)
    const [taskTitle, settaskTitle] = useState("")
    const [Date, setDate] = useState("")
    const [employee, setEmployee] = useState("")
@@ -27,7 +30,7 @@ const [task, setTask] = useState({})
             "failed":false
         })
     
-        const data=JSON.parse(localStorage.getItem("employees"))
+        const data=userData
         data.forEach((empl)=>{
             if(empl.first_name==employee){
             console.log(empl,"hi")
