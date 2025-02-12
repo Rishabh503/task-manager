@@ -7,21 +7,45 @@ import { AuthContext } from "./context/AuthProvider"
 
 export  const App=()=> {
  const [user, setUser] = useState(null)
+ const [loggedInUserData, setLoggedInUserData] = useState(null)
+//  const [loggedInUserData, setLoggedInUserData] = useState(null)
  
  const AuthData=useContext(AuthContext)
- console.log(AuthData.employees)
+
+//  console.log(AuthData.employees)
+
+
+useEffect(()=>{
+  const loggedInUser=localStorage.getItem('loggedInUser')
+  
+  if(loggedInUser){
+    const userData=JSON.parse(loggedInUser)
+    console.log(loggedInUser)
+    console.log("user logged in hai")
+    setUser(userData.role)
+    setLoggedInUserData(userData.data)
+  }
+},[])
+
+
 
  const handleLogin=(email,password)=>{
       if(email=="admin@example.com" && password=="123"){
-        console.log("this is admin");
         setUser("admin")
-        return "hi";
-      }else if(AuthData && 
-        AuthData.employees.find(
-        (emp)=>email==emp.email && password==emp.password)
-      ){
-          console.log("this is one of your emp")
-          setUser("employee")
+        localStorage.setItem("loggedInUser",JSON.stringify({role:"admin"}))
+      }else if(AuthData ){
+          const employee= AuthData.employees
+          .find(
+            (emp)=>email==emp.email && password==emp.password
+          )
+          console.log(employee)
+          if(employee){
+            setUser("employee");
+            setLoggedInUserData(employee)
+            console.log(employee)
+            localStorage.setItem("loggedInUser",JSON.stringify({role:"employee",data:employee}))
+        }
+
       }
       else{
         console.log("galat admi")
@@ -35,7 +59,7 @@ const tee=useContext(AuthContext);
   return (
     < >
     {!user? <Login handleLogin={handleLogin}/> : <h1 className="text-white">hi</h1>}
-    {user=="admin"?<AdminDashboard/> :<EmployeeDashboard/>}
+    {user=="admin"?<AdminDashboard/> :(user=="employee")?<EmployeeDashboard data={loggedInUserData}/>:""}
       {/* <Login/>   */}
       {/* <EmployeeDashboard/> */}
       {/* <AdminDashboard/> */}

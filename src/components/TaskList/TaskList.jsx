@@ -1,84 +1,21 @@
 import React from 'react'
+import AcceptTask from './AcceptTask'
+import CompleteTask from './CompleteTask'
+import FailedTask from './FailedTask'
+import NewTask from './NewTask'
 
-const TaskList = () => {
+const TaskList = ({data}) => {
+    console.log(data)
   return (
     <div className='h-[400px] overflow-auto  p-5 mt-5 w-full flex flex-nowrap gap-10 items-center bg-emerald-500'>
-        <div className='h-full  flex-shrink-0 items-center justify-between  rounded-xl w-[300px] bg-red-200'>
-           <div className='flex items-center justify-between px-2'>
-           <h2 className='text-sm mt-2 rounded-xl bg-red-700 p-2 font-semibold'>
-                    High task
-                </h2>
-                <h3 className='text-xl font-medium'>
-                    New Task
-                </h3>
-           </div>
-            <div className='mt-5'>
-                <p className='text-center font-bold text-xl '>
-                    make a new video
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet iusto repellat natus ipsum? Eligendi, iure? Sequi cupiditate laborum rem eveniet! Delectus, minima voluptatibus? Vero, nisi. Magnam inventore blanditiis nobis natus.
-                </p>
-            </div>
-           
-        </div>
-        <div className='h-full  flex-shrink-0 items-center justify-between  rounded-xl w-[300px] bg-green-200'>
-           <div className='flex items-center justify-between px-2'>
-           <h2 className='text-sm mt-2 rounded-xl bg-red-700 p-2 font-semibold'>
-                    High task
-                </h2>
-                <h3 className='text-xl font-medium'>
-                    New Task
-                </h3>
-           </div>
-            <div className='mt-5'>
-                <p className='text-center font-bold text-xl '>
-                    make a new video
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet iusto repellat natus ipsum? Eligendi, iure? Sequi cupiditate laborum rem eveniet! Delectus, minima voluptatibus? Vero, nisi. Magnam inventore blanditiis nobis natus.
-                </p>
-            </div>
-           
-        </div>
-        <div className='h-full  flex-shrink-0 items-center justify-between  rounded-xl w-[300px] bg-blue-200'>
-           <div className='flex items-center justify-between px-2'>
-           <h2 className='text-sm mt-2 rounded-xl bg-red-700 p-2 font-semibold'>
-                    High task
-                </h2>
-                <h3 className='text-xl font-medium'>
-                    New Task
-                </h3>
-           </div>
-            <div className='mt-5'>
-                <p className='text-center font-bold text-xl '>
-                    make a new video
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet iusto repellat natus ipsum? Eligendi, iure? Sequi cupiditate laborum rem eveniet! Delectus, minima voluptatibus? Vero, nisi. Magnam inventore blanditiis nobis natus.
-                </p>
-            </div>
-           
-        </div>
-        <div className='h-full  flex-shrink-0 items-center justify-between  rounded-xl w-[300px] bg-yellow-200'>
-           <div className='flex items-center justify-between px-2'>
-           <h2 className='text-sm mt-2 rounded-xl bg-red-700 p-2 font-semibold'>
-                    High task
-                </h2>
-                <h3 className='text-xl font-medium'>
-                    New Task
-                </h3>
-           </div>
-            <div className='mt-5'>
-                <p className='text-center font-bold text-xl '>
-                    make a new video
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet iusto repellat natus ipsum? Eligendi, iure? Sequi cupiditate laborum rem eveniet! Delectus, minima voluptatibus? Vero, nisi. Magnam inventore blanditiis nobis natus.
-                </p>
-            </div>
-           
-        </div>
+        {data.tasks.map((elem)=>{
+            if(elem.active) return <AcceptTask/>;
+            else if(elem.new_task) return <NewTask/>;
+            else if(elem.completed) return <CompleteTask/>;
+            else if(elem.failed) return <FailedTask/>;
+
+        }
+        )}
    
     </div>
   )

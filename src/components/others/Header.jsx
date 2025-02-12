@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Header = () => {
+  // const [username , setuSerName]=useState("")
+  // if(!data) setuSerName("admin")
+  //   else setuSerName(data.first_name)
+  // console.log("header ka dat:",data)
+
   return (
+    
     <div className='flex items-center text-white p-10 justify-between'>
         <p>
         Hello
@@ -9,7 +15,7 @@ const Header = () => {
         <br />
         <span className='text-3xl font-medium '>
 
-        User 🏆
+        username 🏆
         </span>
         </p>
 
